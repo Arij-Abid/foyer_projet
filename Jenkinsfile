@@ -5,7 +5,7 @@ pipeline{
         maven "M2_HOME" 
         }
         environment {
-    registry = "arij/devops"
+        registry = "arij/devops"
         registryCredential='dockerhub_id'
         dockerImage=''
          NEXUS_VERSION = "nexus3"
@@ -18,13 +18,8 @@ pipeline{
             stage('Checkout GIT') {
     steps {
         echo 'Checking GitHub Repo...'
-        script {
-            try {
                 git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_projet.git'
-            } catch (Exception e) {
-                echo "Git Checkout failed: ${e.getMessage()}"
-                error "Pipeline failed due to Git Checkout issue"
-            }
+       
         }
     }
 }
