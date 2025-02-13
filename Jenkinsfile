@@ -30,13 +30,11 @@ pipeline{
 }
 
 
-            stage('git clone') {
+stage('Docker Login') {
             steps {
-               git branch: 'main', 
-               url: 'https://github.com/Arij-Abid/foyer_projet.git'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-
         
 
         
