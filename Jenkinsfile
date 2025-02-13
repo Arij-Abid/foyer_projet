@@ -18,7 +18,7 @@ pipeline{
             stage('Checkout GIT ') {
                 steps {
                     echo 'cheking Git hub Repo ...';
-                    git branch : 'master',
+                    git branch : 'main',
                     url : 'https://github.com/Arij-Abid/foyer_projet.git'
                 }
             }
@@ -26,7 +26,7 @@ pipeline{
 
             stage('git clone') {
             steps {
-               git branch: 'master', 
+               git branch: 'main', 
                url: 'https://github.com/Arij-Abid/foyer_projet.git'
             }
         }
