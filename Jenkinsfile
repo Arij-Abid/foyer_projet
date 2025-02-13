@@ -15,14 +15,20 @@ pipeline{
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
     }
         stages {
-            stage('Checkout GIT ') {
-                steps {
-                    echo 'cheking Git hub Repo ...';
-                    git branch : 'main',
-                    url : 'https://github.com/Arij-Abid/foyer_projet.git'
-                }
+            stage('Checkout GIT') {
+    steps {
+        echo 'Checking GitHub Repo...'
+        script {
+            try {
+                git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_projet.git'
+            } catch (Exception e) {
+                echo "Git Checkout failed: ${e.getMessage()}"
+                error "Pipeline failed due to Git Checkout issue"
             }
-         
+        }
+    }
+}
+
 
             stage('git clone') {
             steps {
