@@ -9,8 +9,7 @@ pipeline {
 
     environment {
         registry = "arij/devops"
-        registryCredential = credentials('dockerhub_id')
-        dockerImage = ''
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub_id') 
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "172.16.65.5:8081"
@@ -18,7 +17,7 @@ pipeline {
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
     }
 
-    stages {   // OUVERTURE du bloc stages ✅
+    stages {  
         
         stage('Checkout GIT') {
             steps {
@@ -28,10 +27,13 @@ pipeline {
         }
 
         stage('Docker Login') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+            sh 'echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin'
         }
+    }
+}
+
 
         stage('MVN CLEAN INSTALL') {
             steps {
@@ -101,15 +103,16 @@ pipeline {
             } 
         }
 
-        stage('Deploy our image') { 
-            steps { 
-                script { 
-                    docker.withRegistry('', registryCredential) { 
-                        dockerImage.push() 
-                    }
-                } 
+       stage('Deploy our image') { 
+    steps { 
+        script { 
+            docker.withRegistry('', 'dockerhub_id') { 
+                dockerImage.push() 
             }
-        }
+        } 
+    }
+}
+
 
         stage('Show Date') {
             steps {
@@ -125,7 +128,7 @@ pipeline {
                 }
             }
         }
-    } // FERMETURE du bloc stages ✅
+    } 
 
     post {
         always {
@@ -138,4 +141,4 @@ pipeline {
         }
     }
 
-} // FERMETURE du bloc pipeline ✅
+} 
