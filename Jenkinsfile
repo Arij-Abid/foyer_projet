@@ -9,7 +9,7 @@ pipeline {
 
     environment {
         registry = "arij/devops"
-        registryCredential = 'dockerhub_id'
+        registryCredential = credentials('dockerhub_id')
         dockerImage = ''
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
