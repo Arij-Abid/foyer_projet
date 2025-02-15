@@ -23,6 +23,7 @@ pipeline {
             steps {
                 echo 'Checking GitHub Repo...'
                 git branch: 'main', url: 'https://github.com/Arij-Abid/foyer_projet.git'
+                sh 'ls -la'  // Ajout pour lister les fichiers
             }
         }
 
