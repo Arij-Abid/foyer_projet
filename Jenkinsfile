@@ -38,6 +38,8 @@ pipeline {
 
         stage('MVN CLEAN INSTALL') {
             steps {
+               sh 'pwd'  // Affiche le chemin actuel
+                sh 'ls -la'  // Liste les fichiers
                 sh 'mvn clean install'
             }
         }
