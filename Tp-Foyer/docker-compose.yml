@@ -7,7 +7,7 @@ services:
     networks:
       - foyerr
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/foyer
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/tpFoyer17
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
