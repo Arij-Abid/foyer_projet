@@ -1,4 +1,4 @@
-package tn.esprit.tpfoyer17.services.impementations;
+package tn.foyer;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AccessLevel;
