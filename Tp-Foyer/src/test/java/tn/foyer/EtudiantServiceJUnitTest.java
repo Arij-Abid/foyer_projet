@@ -13,8 +13,9 @@ import java.util.Date;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@SpringBootTest
 class EtudiantServiceJUnitTest {
 
     @Autowired
