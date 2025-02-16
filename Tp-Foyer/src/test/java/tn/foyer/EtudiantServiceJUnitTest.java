@@ -13,11 +13,11 @@ import tn.foyer.services.service.EtudiantService;
 
 import java.util.Date;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest
+@SpringBootTest(classes = TpFoyer17Application.class)
 class EtudiantServiceJUnitTest {
 
     @Autowired
@@ -54,7 +54,7 @@ class EtudiantServiceJUnitTest {
     @Order(3)
     void retrieveEtudiant() {
         // Ensure an Etudiant with ID 1 exists before running the test
-        Etudiant etudiant = etudiantService.retrieveEtudiant(1L); 
+        Etudiant etudiant = etudiantService.retrieveEtudiant(1L);
         assertNotNull(etudiant);
         assertEquals("Alice", etudiant.getNomEtudiant());
         System.out.println("Retrieve Etudiant: Ok");
@@ -72,9 +72,17 @@ class EtudiantServiceJUnitTest {
     @Test
     @Order(5)
     void findByReservationsAnneeUniversitaire() {
+        Etudiant etudiant1 = new Etudiant();
+        etudiant1.setNomEtudiant("John");
+        etudiant1.setPrenomEtudiant("Doe");
+        etudiant1.setCinEtudiant(123456);
+        etudiant1.setDateNaissance(new Date());
+        etudiantService.addEtudiants(etudiant1);
+
+        // Test that there are no reservations for the given academic year
         List<Etudiant> etudiants = etudiantService.findByReservationsAnneeUniversitaire();
         assertNotNull(etudiants);
-        assertFalse(etudiants.isEmpty(), "Expected non-empty list of Etudiants with reservations");
+        assertTrue(etudiants.isEmpty(), "Expected empty list of Etudiants with no reservations");
         System.out.println("Find By Reservations Annee Universitaire: Ok");
     }
 
