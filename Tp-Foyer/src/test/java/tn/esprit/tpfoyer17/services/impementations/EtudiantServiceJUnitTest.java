@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.tpfoyer17.entities.Etudiant;
 import tn.esprit.tpfoyer17.repositories.EtudiantRepository;
-import tn.esprit.tpfoyer17.services.implementations;
+import tn.esprit.tpfoyer17.services.implementations.EtudiantService;.
+
 import java.util.Date;
 import java.util.List;
 
