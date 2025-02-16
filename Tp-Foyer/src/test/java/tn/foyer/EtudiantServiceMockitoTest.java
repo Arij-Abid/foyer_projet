@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import tn.esprit.tpfoyer17.entities.Etudiant;
-import tn.esprit.tpfoyer17.repositories.EtudiantRepository;
+import tn.foyer.entities.Etudiant;
+import tn.foyer.repositories.EtudiantRepository;
+import tn.foyer.services.service.EtudiantService;
 
 
 import java.time.LocalDate;

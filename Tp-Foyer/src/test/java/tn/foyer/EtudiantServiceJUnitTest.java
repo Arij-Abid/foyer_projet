@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import tn.esprit.tpfoyer17.entities.Etudiant;
-import tn.esprit.tpfoyer17.repositories.EtudiantRepository;
+import tn.foyer.entities.Etudiant;
+import tn.foyer.repositories.EtudiantRepository;
+import tn.foyer.services.service.EtudiantService;
+
 import java.util.Date;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
