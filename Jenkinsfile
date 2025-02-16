@@ -41,11 +41,15 @@ pipeline {
             }
         }
 
-        stage('JUnit / Mockito Test') {
-            steps {
-                sh 'mvn test'
-            }
+stage('JUnit / Mockito Test') {
+    steps {
+        dir('Tp-Foyer') {
+            sh 'ls -la'  // Vérifier les fichiers présents
+            sh 'mvn test'
         }
+    }
+}
+
 
         stage('SonarQube analysis') {
             steps {
