@@ -52,9 +52,7 @@ stage('JUnit / Mockito Test') {
 
 stage('SonarQube analysis') {
     steps {
-        withSonarQubeEnv() {
             sh "mvn sonar:sonar"
-        }
     }
 }
 
