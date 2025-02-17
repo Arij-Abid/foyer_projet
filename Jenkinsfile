@@ -52,7 +52,9 @@ stage('JUnit / Mockito Test') {
 
 stage('SonarQube analysis') {
     steps {
+              dir('Tp-Foyer') {
             sh "mvn sonar:sonar"
+              }
     }
 }
 
