@@ -50,14 +50,14 @@ stage('JUnit / Mockito Test') {
     }
 }
 
-
-        stage('SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonarqube-8.9.7') { 
-                    sh "mvn sonar:sonar"
-                }
-            }
+stage('SonarQube analysis') {
+    steps {
+        withSonarQubeEnv() {
+            sh "mvn sonar:sonar"
         }
+    }
+}
+
 
         stage("Publish to Nexus Repository Manager") {
             steps {
